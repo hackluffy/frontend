@@ -1,0 +1,47 @@
+.maps{
+    width:100%;
+    background: #fcfafa;
+}
+
+.maps__top{
+    padding:30px 20px;
+    margin-left:20px;
+}
+
+.maps__top__title{
+    font-size:33px;
+    font-weight: 700;
+    font-family: 'Roboto Condensed';
+}
+
+.maps__top__link{
+    text-decoration: none;
+    color:#707070;
+}
+
+.yandex-map{
+    width:100vw;
+    height: 100vh;
+}
+
+
+// @media (max-width: 1440px){
+
+//     .yandex-map{
+//         width: 100%;
+//     }
+    
+// }
+
+
+// @media (max-width: 768px){
+
+    
+// }
+
+// @media (max-width: 567px){
+
+
+// }
+
+
