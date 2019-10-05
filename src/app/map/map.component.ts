@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import ymaps from 'ymaps';
 import { Converter } from '../service/converter/converter';
 import { Parking, PARKINGS } from '../model/parking';
+import { Parkomat, PARKOMATS } from '../model/parkomat';
+import { MainService } from '../service/main/main.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-map',
@@ -9,38 +12,52 @@ import { Parking, PARKINGS } from '../model/parking';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+  
+  /* yandex maps elements */
   private ymaps: any;
   private map: any;
 
-  private parkings: Parking[];
+  /* objects */
+  private parkings: Parking[] = [];
+  private parkomats: Parkomat[] = [];
 
+  /* additional class */
   private converter = new Converter();
 
-  constructor() { }
+  constructor(protected service: MainService) { }
 
   ngOnInit() {
 
+    /* when map load */
     this.loadMap().then(res => {
-      console.log(res);
-      var myPlacemark = new this.ymaps.Placemark([43.241627, 76.898916]);
-      this.map.geoObjects.add(myPlacemark);
 
-      this.loadParkings();
-      this.drawParkings();  
+      /* parking places */
+      this.service.getParkingPlaces().then(res => {        
+        this.parkings = res;
+
+        this.parkings.forEach(element => { this.toParkingPlace(element);});
+      });
+
+      /* parkomats */
+      this.service.getParkomats().then(res => {
+        this.parkomats = res;
+
+        this.parkomats.forEach(element => { this.toParkomats(element);});
+      });
     });
   
   }
 
+  /* load yandex maps */
   async loadMap(): Promise<any> {
     this.ymaps = await ymaps.load();
 
+    /* set center and bounds of map */
     this.map = new this.ymaps.Map('map', {
       center: [43.241627, 76.898916],
       zoom: 13
     }, 
     {
-      // Зададим ограниченную область прямоугольником, 
-      // примерно описывающим Санкт-Петербург.
       restrictMapArea: [
           [43.17, 76.81],
           [43.32, 76.99]
@@ -51,21 +68,15 @@ export class MapComponent implements OnInit {
     return Promise.resolve({result: 'ok'});
   }
 
-  drawParkings(): void {
-    for (let i = 0; i < this.parkings.length; ++i) {
-      this.toParkingPlace(this.parkings[i]);
-    }
-
-  }
-
-  loadParkings(): void {
-    this.parkings = PARKINGS;
-  }
-
-  toParkingPlace(parking: Parking) {
-
+  toParkingPlace(parking: Parking): void {
     var geoObject = this.converter.toParkingPlace(parking); 
 
     this.map.geoObjects.add(geoObject);
-}
+  }
+
+  toParkomats(parkomat: Parkomat): void {
+    var geoObject = this.converter.toParkomat(parkomat); 
+
+    this.map.geoObjects.add(geoObject);
+  }
 }
