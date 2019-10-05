@@ -16,7 +16,7 @@ import { MainService } from './service/main/main.service';
     HeaderComponent,
     HomeComponent,
     MapComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
