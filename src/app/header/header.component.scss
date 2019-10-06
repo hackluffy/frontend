@@ -56,6 +56,15 @@
 }
 
 
+
+@media (max-width: 2560px){
+
+    .header__mobile{
+        display: none;
+    }
+
+}
+
 @media (max-width: 1440px){
 
     .header__mobile{

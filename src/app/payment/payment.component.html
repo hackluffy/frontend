@@ -1,0 +1,21 @@
+<div class="payment">
+    <div class="payment__form">
+        <p class="payment__title">Введите номер парковочной зоны или отсканируйте парковочный билет</p>
+        <input class="payment__input" type="text" placeholder="НОМЕР АВТОМОБИЛЯ" [(ngModel)]="state_number"/>
+        <button class="payment__btn" (click) = "getCarData()">Оплатить</button>
+    </div>
+
+    <div class="car-info">
+        <p class="car-info__title">Дата прибытия: {{a}} </p>
+        <br>
+        <p class="car-info__title"> Гос. номер: {{car.state_number}}</p>
+        <div class="car-info__title">
+            <p>
+                Сумма к оплате: {{sum}} тг
+            </p>
+        </div>
+    </div>
+
+    
+    
+</div>

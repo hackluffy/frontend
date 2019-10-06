@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainService } from './service/main/main.service';
 import { SimulationComponent } from './simulation/simulation.component';
+import { PaymentComponent } from './payment/payment.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { SimulationComponent } from './simulation/simulation.component';
     MapComponent,
     FooterComponent,
     SimulationComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     MainService

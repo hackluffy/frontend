@@ -1,0 +1,56 @@
+.payment{
+    width:100%;
+    height: 60vh;
+    background: #fcfafa;
+}
+
+.payment__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+}
+
+.payment__title{
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Roboto',sans-serif;
+}
+
+.payment__input{
+    width: 50%;
+    height: 50px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.payment__btn{
+    width: 50%;
+    color:#fff;
+    background-color:rgb(243, 204, 30);
+    padding:15px;
+    font-size:20px;
+    font-weight: 500;
+
+}
+
+.car-info{
+    padding:50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+}
+
+.car-info__title{
+    font-size:20px;
+    font-weight: 900;
+    font-family: 'Roboto',sans-serif;
+    
+}

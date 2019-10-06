@@ -13,6 +13,10 @@ export class Converter {
         });
     }
 
+    paymentClick(){
+        document.getElementById("myModal").style.display = 'block';
+    }
+
     async load(): Promise<any> {
         this.ymaps = await ymaps.load();
 
@@ -64,6 +68,7 @@ export class Converter {
                 '<p class="balloon__curr__number" style=" padding:6.5px 13px 6.5px 6.5px;">Количество текущих мест:' + freePlaces + '</p>' +
                 '<p class="balloon__cost" style="background-color:#ffe9af;  padding:6.5px 13px 6.5px 6.5px; border-bottom: 1px solid #222;">Стоимость:' + parking.cost + '</p>' +
                 '<div class="balloon__payment" style=" padding:6.5px 13px 6.5px 6.5px;>Способ оплаты:</div>' + '<img src="../../assets/images/pay4.png" style="width:30px; height:30px; padding:5px; border:1px solid #FFD204;" alt=""/>' +
+                '<a href="/payment">Pay</a>' + 
             '</div>'
                 
                 
@@ -81,7 +86,8 @@ export class Converter {
     toParkomat(parkomat: Parkomat) {
         return new this.ymaps.Placemark([parkomat.x, parkomat.y],
         {
-            balloonContent: "qwe"
+            balloonContentHeader: 'Парковочная зона: ' + parkomat.number,
+            balloonContent: 'Адрес: ' + parkomat.address,
         },
         {
             iconLayout: 'default#image',
