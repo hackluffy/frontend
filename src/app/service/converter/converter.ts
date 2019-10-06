@@ -22,6 +22,26 @@ export class Converter {
     toParkingPlace(parking: Parking) {
         console.log(parking);
 
+        /* считаем свободные места */
+        const freePlaces = parking.current_places - parking.busy_places;
+        let fillColoR;
+        let strokeColoR;
+
+
+        let ratio = freePlaces / parking.current_places;
+        if (ratio >= 0.8) {
+            fillColoR = '#00F75B';
+            strokeColoR = '#06C64D';
+        }
+        else if (ratio >= 0.2) {
+            fillColoR = '#FFD104';
+            strokeColoR = '#f79120';
+        }
+        else {
+            fillColoR = '#FF4F4F';
+            strokeColoR = '#D70000';
+        }
+
         return new this.ymaps.GeoObject({
             geometry: {
                 type: "Polygon",
@@ -39,7 +59,7 @@ export class Converter {
                 '<p class="balloon__address">Адрес:' + parking.address + '</p>' +
                 '<p class="balloon__work__time" style="background-color:#ffe9af; padding:2.6px 13px;">Время работы:' + parking.work_time + '</p>' +
                 '<p class="balloon__number" style="">Количество мест:' + parking.current_places + '</p>' +
-                '<p class="balloon__curr__number" style="">Количество текущих мест:' + parking.current_places + '</p>' +
+                '<p class="balloon__curr__number" style="">Количество текущих мест:' + freePlaces + '</p>' +
                 '<p class="balloon__cost" style="background-color:#ffe9af; padding:2.6px 13px; border-bottom: 1px solid #222;">Стоимость:' + parking.cost + '</p>' +
                 '<div class="balloon__payment">Способ оплаты:</div>' + '<img src="../../assets/images/pay4.png" style="width:30px; height:30px; padding:5px; border:1px solid #FFD204;" alt=""/>' +
             '</div>'
@@ -48,8 +68,8 @@ export class Converter {
             }
         }, 
         {
-            fillColor: '#FFD104',
-            strokeColor: '#f79120',
+            fillColor: fillColoR,
+            strokeColor: strokeColoR,
             opacity: 0.5,
             strokeWidth: 10,
             strokeStyle: 'shortdash'
@@ -59,9 +79,12 @@ export class Converter {
     toParkomat(parkomat: Parkomat) {
         return new this.ymaps.Placemark([parkomat.x, parkomat.y],
         {
+            balloonContent: "qwe"
+        },
+        {
             iconLayout: 'default#image',
-            iconImageHref: '../../',
-            iconImageSize: [42, 42],
+            iconImageHref: '../../assets/images/item.png',
+            iconImageSize: [30, 42],
         })
     }
 }
