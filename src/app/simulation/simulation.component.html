@@ -1,1 +1,21 @@
-<p>simulation works!</p>
+<div class="content">
+    <div class="number">
+        <label>Гос номер</label>
+        <input type='text' [(ngModel)]='simulation.number' placeholder="Номер транспорта">
+    </div>
+    <div class="coordinates">
+        <div class="x">
+            <label>X</label>
+            <input type='text' [(ngModel)]='simulation.x' placeholder="Координата оси Х">
+        </div>
+        <div class="y">
+            <label>Y</label>
+            <input type='text' [(ngModel)]='simulation.y' placeholder="Координата оси Y">
+        </div>
+    </div>
+    <div class="submit">
+        <div class="btn" (click)='submit()'>
+            ОТПРАВИТЬ!
+        </div>
+    </div>
+</div>

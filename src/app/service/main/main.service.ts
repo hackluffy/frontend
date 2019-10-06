@@ -3,6 +3,7 @@ import { BaseService } from '../base/base.service';
 import { HttpClient } from '@angular/common/http';
 import { Parking } from 'src/app/model/parking';
 import { Parkomat } from 'src/app/model/parkomat';
+import { Simulate } from 'src/app/simulation/model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,18 @@ export class MainService extends BaseService {
   }
 
   getParkingPlaces(): Promise<Parking[]> {
-    return this.get(`http://192.168.43.76:8000/getParkings/`, {});
+    return this.get(`http://localhost:8000/getParkings/`, {});
   }
 
   getParkomats(): Promise<Parkomat[]> {
-    return this.get(`http://192.168.43.76:8000/getParkomats/`, {});
+    return this.get(`http://localhost:8000/getParkomats/`, {});
+  }
+
+  setTransport(simulate: Simulate): Promise<any> {
+    return this.post(`http://localhost:8000/setNum/`, {
+      state_number: simulate.number,
+      x: +simulate.x,
+      y: +simulate.y
+    });
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Simulate } from './model';
+import { MainService } from '../service/main/main.service';
 
 @Component({
   selector: 'app-simulation',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimulationComponent implements OnInit {
 
-  constructor() { }
+  simulation: Simulate = {
+    number: '',
+    x: 0,
+    y: 0
+  }
+
+  constructor(protected service: MainService) { }
 
   ngOnInit() {
   }
 
+  private submit(): void {
+    this.service.setTransport(this.simulation).then(res => {
+      alert(res);
+    })
+  }
+
 }
+
+
