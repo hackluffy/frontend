@@ -22,6 +22,8 @@ export class Converter {
     toParkingPlace(parking: Parking) {
         console.log(parking);
 
+        
+
         /* считаем свободные места */
         const freePlaces = parking.current_places - parking.busy_places;
         let fillColoR;
@@ -71,7 +73,7 @@ export class Converter {
             fillColor: fillColoR,
             strokeColor: strokeColoR,
             opacity: 0.5,
-            strokeWidth: 10,
+            strokeWidth: 8,
             strokeStyle: 'shortdash'
         });
     }

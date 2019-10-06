@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import ymaps from 'ymaps';
 import { Converter } from '../service/converter/converter';
 import { Parking} from '../model/parking';
 import { Parkomat, PARKOMATS } from '../model/parkomat';
 import { MainService } from '../service/main/main.service';
-import { element } from 'protractor';
+import ymaps from 'ymaps';
 
 @Component({
   selector: 'app-map',
@@ -15,7 +14,7 @@ export class MapComponent implements OnInit {
   
   /* yandex maps elements */
   private ymaps: any;
-  private map: any;
+  public map: any;
 
   /* objects */
   private parkings: Parking[] = [];
