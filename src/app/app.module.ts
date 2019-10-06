@@ -9,6 +9,7 @@ import { MapComponent } from './map/map.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainService } from './service/main/main.service';
+import { SimulationComponent } from './simulation/simulation.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MainService } from './service/main/main.service';
     HomeComponent,
     MapComponent,
     FooterComponent,
+    SimulationComponent,
   ],
   imports: [
     BrowserModule,
