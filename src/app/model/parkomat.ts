@@ -41,6 +41,13 @@ export const PARKOMATS: Parkomat[] = [
         x: 43.239409,
         y: 76.955427
     },
+    {
+        id: 7,
+        number: 16,
+        address: "улица Сатпаева, 3",
+        x: 43.239100, 
+        y: 76.949920
+    }
 ]
 
 export interface Parkomat {

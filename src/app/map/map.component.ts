@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import ymaps from 'ymaps';
 import { Converter } from '../service/converter/converter';
-import { Parking, PARKINGS } from '../model/parking';
+import { Parking} from '../model/parking';
 import { Parkomat, PARKOMATS } from '../model/parkomat';
 import { MainService } from '../service/main/main.service';
 import { element } from 'protractor';
@@ -32,7 +32,8 @@ export class MapComponent implements OnInit {
     this.loadMap().then(res => {
 
       /* parking places */
-      this.service.getParkingPlaces().then(res => {        
+      this.service.getParkingPlaces().then(res => {     
+        console.log(res);   
         this.parkings = res;
 
         this.parkings.forEach(element => { this.toParkingPlace(element);});
