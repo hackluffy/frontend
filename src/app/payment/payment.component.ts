@@ -17,7 +17,7 @@ export class PaymentComponent implements OnInit {
   
   car: CarData;
   parking: Parking;
-  a: string;
+  a: string = '';
 
   ngOnInit() {
   }
@@ -55,14 +55,24 @@ export class PaymentComponent implements OnInit {
 
   
   getCarData(){
-    this.service.getCarData(this.state_number).then(res => {
-      console.log(res);
-      this.car = res;
 
-      this.a = this.car.time_count.toString().split('T')[1].split('.')[0];
-
-      this.sum = this.pay();
-
-    })
+    if (this.a === '') {
+      this.service.getCarData(this.state_number).then(res => {
+        console.log(res);
+        this.car = res;
+  
+        this.a = this.car.time_count.toString().split('T')[1].split('.')[0];
+  
+        this.sum = this.pay();
+  
+      });
+    }
+    else {
+      console.log(this.car);
+      this.service.payment(this.car.id).then(res => {
+        console.log("Успешно оплачено!");
+      })
+    }
+    
   }
 }

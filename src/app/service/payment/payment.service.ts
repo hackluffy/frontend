@@ -14,7 +14,12 @@ import {CarData} from '../../model/cardata';
     
     getCarData(s: string): Promise<CarData> {
       console.log({state_number: s});
-        return this.post(`http://192.168.43.165:8000/getCarData/`, {state_number: s});
+      return this.post(`http://localhost:8000/getCarData/`, {state_number: s});
+    }
+
+    payment(aaa: number): Promise<any> {
+      console.log(aaa);
+      return this.delet(`http://localhost:8000/getCarData/`, {ida: aaa});
     }
 
 }

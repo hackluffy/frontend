@@ -86,7 +86,7 @@ export class Converter {
     toParkomat(parkomat: Parkomat) {
         return new this.ymaps.Placemark([parkomat.x, parkomat.y],
         {
-            balloonContentHeader: 'Парковочная зона: ' + parkomat.number,
+            balloonContentHeader: 'Паркомат: ' + parkomat.number,
             balloonContent: 'Адрес: ' + parkomat.address,
         },
         {
