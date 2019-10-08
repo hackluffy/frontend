@@ -65,10 +65,10 @@ export class Converter {
                 '<p class="balloon__address" style="padding:6.5px 13px 6.5px 6.5px;">Адрес:' + parking.address + '</p>' +
                 '<p class="balloon__work__time" style="background-color:#ffe9af;  padding:6.5px 13px 6.5px 6.5px;">Время работы:' + parking.work_time + '</p>' +
                 '<p class="balloon__number" style=" padding:6.5px 13px 6.5px 6.5px;">Количество мест:' + parking.current_places + '</p>' +
-                '<p class="balloon__curr__number" style=" padding:6.5px 13px 6.5px 6.5px;">Количество текущих мест:' + freePlaces + '</p>' +
+                '<p class="balloon__curr__number" style=" padding:6.5px 13px 6.5px 6.5px;">Количество свободных мест:' + freePlaces + '</p>' +
                 '<p class="balloon__cost" style="background-color:#ffe9af;  padding:6.5px 13px 6.5px 6.5px; border-bottom: 1px solid #222;">Стоимость:' + parking.cost + '</p>' +
                 '<div class="balloon__payment" style=" padding:6.5px 13px 6.5px 6.5px;>Способ оплаты:</div>' + '<img src="../../assets/images/pay4.png" style="width:30px; height:30px; padding:5px; border:1px solid #FFD204;" alt=""/>' +
-                '<a href="/payment">Pay</a>' + 
+                '<a href="/payment"><button style="background-color:#f3cc1e;width:100px;height:30px;color:#fff;font-weight:500;font-size:15px;">Оплатить</button></a>' + 
             '</div>'
                 
                 
