@@ -11,8 +11,8 @@ export class SimulationComponent implements OnInit {
 
   simulation: Simulate = {
     number: '',
-    x: 0,
-    y: 0
+    x: 43.238636,
+    y: 76.948066
   }
 
   constructor(protected service: MainService) { }

@@ -24,31 +24,17 @@ export class PaymentComponent implements OnInit {
   
   pay(){
       let dt = new Date(this.car.time_count).getMilliseconds();
-
-      // console.log(new Date(this.car.time_count));
-
       let a = this.car.time_count.toString();
-
-
-
-      // console.log(dt);
       let current_time = new Date().getMilliseconds();
-
-      // console.log(current_time);
       let diff;
 
       if(dt < current_time){
         diff = current_time - dt;
       }else{
         diff = dt - current_time;
-      }
+      }      
 
-      // console.log(diff);
-      
-
-      console.log(this.car.parking_place.cost);
       let sum = Math.ceil(diff/1000/3600) * this.car.parking_place.cost;
-      console.log(sum);
       return sum;
   }
   
@@ -68,10 +54,17 @@ export class PaymentComponent implements OnInit {
       });
     }
     else {
-      console.log(this.car);
-      this.service.payment(this.car.id).then(res => {
-        console.log("Успешно оплачено!");
-      })
+      // console.log(this.car);
+      let that = this;
+      
+      let myTime = setTimeout(function(){
+      
+        that.service.payment(that.car.id).then(res => {
+          alert("Успешно удалено");
+          that.getCarData();
+        })
+
+      },5000)
     }
     
   }
