@@ -23,7 +23,6 @@ export class BaseService {
     return this.http.put(uri, body).toPromise().then(res => res);
   }
 
-
   private normalBody(body: any): any {
     if (!body) {
       body = {};
@@ -35,4 +34,15 @@ export class BaseService {
     }
     return body;
   }
+
+  // private getUrlParams(body: any): HttpParams {
+  //   let params = new HttpParams();
+  //   for (const key in body) {
+  //     if (!body.hasOwnProperty(key)) {
+  //       continue;
+  //     }
+  //     params = params.append(key, body[key]);
+  //   }
+  //   return params;
+  // }
 }

@@ -19,7 +19,9 @@ import {CarData} from '../../model/cardata';
 
     payment(aaa: number): Promise<any> {
       console.log(aaa);
-      return this.delet(`http://localhost:8000/getCarData/`, {ida: aaa});
+      console.log({ida: aaa});
+      let a = {ida: aaa};
+      return this.post(`http://localhost:8000/deleteCarData/`, a);
     }
 
 }
